@@ -1,4 +1,0 @@
-uttarakhand
-===========
-
-My pet project
