@@ -27,11 +27,32 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$queryModel=DpQuery::model();
-		$userModel=DpUser::model();
-		$this->render('index',array('queryModel'=>$queryModel, 'userModel'=>$userModel));
+		set_include_path($_SERVER['DOCUMENT_ROOT'].'/gplus-quickstart-php/vendor/google/apiclient/src');
+		require_once $_SERVER['DOCUMENT_ROOT'].'/gplus-quickstart-php/vendor/autoload.php';
+		$client = new Google_Client();
+		$client->setApplicationName(Yii::app()->params['gapplication_name']);
+		$client->setClientId(Yii::app()->params['gclient_id']);
+		$client->setClientSecret(Yii::app()->params['gclient_secret']);
+		$client->setRedirectUri('postmessage');
+
+		$plus = new Google_Service_Plus($client);
+
+		$app = new Silex\Application();
+		$app['debug'] = true;
+
+		$app->register(new Silex\Provider\TwigServiceProvider(), array(
+			'twig.path' => $_SERVER['DOCUMENT_ROOT'].'/gplus-quickstart-php',//__DIR__,
+		));
+		$app->register(new Silex\Provider\SessionServiceProvider());
+
+		$state = md5(rand());
+		$app['session']->set('state', $state);
+		$this->render('test',array(
+			'CLIENT_ID' => Yii::app()->params['gclient_id'],
+			'STATE' => $state,
+			'APPLICATION_NAME' => Yii::app()->params['gapplication_name'],
+		));
+		//$this->render('index',array('queryModel'=>$queryModel, 'userModel'=>$userModel));
 	}
 
 	/**
@@ -169,8 +190,4 @@ class SiteController extends Controller
         $message->from = 'jackblanc2@gmail.com';   
         Yii::app()->mail->send($message);       
     }
-     public function actionTest()
-       {
-          $this->render('map');
-       }
 }
