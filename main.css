@@ -1,0 +1,17 @@
+body{
+	background-image:url(nature.jpg);
+}
+
+a{
+	color:#FFFFFF;
+}
+
+.main-container h1 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	text-shadow:1px 1px #0E83F0;
+	color:#FFFFFF;
+}
+
+h3, p{
+	color:#FFFFFF;
+}

@@ -1,0 +1,55 @@
+2014/01/06 16:29:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "actions".' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('actions')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('actions')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/actions')
+#3 /var/www/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/yii/testdrive/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/yii/testdrive/index.php?r=site/actions
+---
+2014/01/06 16:30:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "actions".' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('actions')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('actions')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/actions')
+#3 /var/www/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/yii/testdrive/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/yii/testdrive/index.php?r=site/actions
+---
+2014/01/06 16:30:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "s".' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('s')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('s')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/s')
+#3 /var/www/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/yii/testdrive/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/yii/testdrive/index.php?r=site/s
+---
+2014/01/15 09:33:06 [error] [php] date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (/var/www/yii/testdrive/protected/views/layouts/main.php:51)
+Stack trace:
+#0 /var/www/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#1 /var/www/yii/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#2 /var/www/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#3 /var/www/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#4 /var/www/yii/framework/web/CBaseController.php(206): CContentDecorator->run()
+#5 /var/www/yii/framework/web/CBaseController.php(300): SiteController->endWidget()
+#6 /var/www/yii/testdrive/protected/views/layouts/column1.php(6): SiteController->endContent()
+#7 /var/www/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#9 /var/www/yii/framework/web/CController.php(784): SiteController->renderFile()
+#10 /var/www/yii/testdrive/protected/controllers/SiteController.php(32): SiteController->render()
+#11 /var/www/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#12 /var/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#13 /var/www/yii/framework/web/CController.php(286): SiteController->runAction()
+#14 /var/www/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#15 /var/www/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#16 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#17 /var/www/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/yii/testdrive/index.php(13): CWebApplication->run()
+REQUEST_URI=/yii/testdrive/
+in /var/www/yii/testdrive/protected/views/layouts/main.php (51)
+in /var/www/yii/testdrive/protected/views/layouts/column1.php (6)
+in /var/www/yii/testdrive/protected/controllers/SiteController.php (32)
