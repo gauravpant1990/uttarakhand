@@ -1,5 +1,4 @@
 <?php
-
 class UkUserController extends Controller
 {
 	/**
@@ -28,7 +27,7 @@ class UkUserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','test','test1'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -169,5 +168,50 @@ class UkUserController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	
+	public function actionTest()
+    {
+		$headers = array();
+$headers[]= 'content-length: 10';// . trim(strlen(print_r($params, true)));
+$headers[]= 'Content-Type: application/x-www-form-urlencoded';
+
+		$token = json_decode($_SESSION["_sf2_attributes"]["token"])->access_token;
+		$url= "https://www.googleapis.com/plus/v1/disconnect?access_token=".$token;
+		//$url= "http://localhost/gplus-quickstart-php/signin.php/disconnect";//ya29.hwBl26sWYOd4NdykDeeZ5mwbI4tGhz77IY-K1Ri-hNYUXAomxtXYNxxN
+		// initialize a handle "http://localhost/gplus-quickstart-php/signin.php/people
+		$chandle = curl_init();
+		// set URL
+		curl_setopt($chandle, CURLOPT_URL, $url);
+		// return results a s string
+		curl_setopt($chandle, CURLOPT_HTTPHEADER, $headers);
+		//curl_setopt($chandle,CURLOPT_HEADER,true);
+		curl_setopt($chandle, CURLOPT_POST, true);
+		// execute the call
+		$result = curl_exec($chandle);
+		//var_dump(curl_error($chandle));
+		curl_close($chandle);
+		var_dump($result);
+    }
+    
+    public function actionTest1()
+    {
+		var_dump($_SESSION);break;
+		$token = json_decode($_SESSION["_sf2_attributes"]["token"])->access_token;
+		//$url = Yii::app()->getBaseUrl(true)."/gplus-quickstart-php/signin.php/token";
+		$url= "https://www.googleapis.com/plus/v1/people/me?access_token=".$token;//ya29.hwBl26sWYOd4NdykDeeZ5mwbI4tGhz77IY-K1Ri-hNYUXAomxtXYNxxN
+		// initialize a handle "http://localhost/gplus-quickstart-php/signin.php/people
+		$chandle = curl_init();
+		// set URL
+		curl_setopt($chandle, CURLOPT_URL, $url);
+		// return results a s string
+		curl_setopt($chandle, CURLOPT_RETURNTRANSFER, 1);
+		//curl_setopt($chandle,CURLOPT_HEADER,true);
+		//curl_setopt($chandle, CURLOPT_USERAGENT,  'Codular Sample cURL Request');
+		// execute the call
+		$result = curl_exec($chandle);
+		//var_dump(curl_error($chandle));
+		curl_close($chandle);
+		var_dump(json_decode($result));
 	}
 }

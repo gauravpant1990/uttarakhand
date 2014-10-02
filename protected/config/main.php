@@ -87,6 +87,9 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+		'gclient_id' => '555613283129-6gnki4msiadk3ttrk68jdiqmsbqul16e.apps.googleusercontent.com',
+		'gclient_secret' => 'xiAZpC2N-iGxS-PvfTKI8EBE',
+		'gapplicatoin_name' => "Uttarakhand",
 	),
 	/**/
 );
